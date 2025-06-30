@@ -36,18 +36,21 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "public"),
     },
-    hot: true,
+    hot: false,
+    liveReload: true,
     port: 3000,
     historyApiFallback: true,
     compress: true,
     open: false,
     client: {
-      logging: "warn",
+      logging: "error",
       overlay: {
         errors: true,
         warnings: false,
       },
+      webSocketTransport: "ws",
     },
+    webSocketServer: "ws",
   },
   resolve: {
     extensions: [".js", ".jsx"],
