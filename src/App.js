@@ -7,6 +7,15 @@ import "./App.css";
 const App = () => {
   const [activeTab, setActiveTab] = useState("login");
 
+  // Prevent any unhandled events
+  const handleTabClick = (tabName) => {
+    try {
+      setActiveTab(tabName);
+    } catch (error) {
+      console.error("Error switching tabs:", error);
+    }
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case "login":
@@ -32,14 +41,16 @@ const App = () => {
         <div className="app-nav">
           <button
             className={`nav-item ${activeTab === "login" ? "active" : ""}`}
-            onClick={() => setActiveTab("login")}
+            onClick={() => handleTabClick("login")}
+            type="button"
           >
             <span className="nav-icon">👤</span>
             <span className="nav-label">Login</span>
           </button>
           <button
             className={`nav-item ${activeTab === "settings" ? "active" : ""}`}
-            onClick={() => setActiveTab("settings")}
+            onClick={() => handleTabClick("settings")}
+            type="button"
           >
             <span className="nav-icon">⚙️</span>
             <span className="nav-label">Settings</span>
