@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "echo 'No dev server configured yet'",
+    "dev": "http-server -p 3000 -c-1",
     "build": "echo 'No build configured yet'",
-    "start": "echo 'No start configured yet'"
+    "start": "npm run dev"
   },
   "keywords": [],
   "author": "",
