@@ -3,6 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
+  infrastructureLogging: {
+    level: "error",
+  },
+  stats: "errors-only",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -43,12 +47,10 @@ module.exports = {
     compress: true,
     open: false,
     client: {
-      logging: "error",
-      overlay: {
-        errors: true,
-        warnings: false,
-      },
+      logging: "none",
+      overlay: false,
       webSocketTransport: "ws",
+      progress: false,
     },
     webSocketServer: "ws",
   },
