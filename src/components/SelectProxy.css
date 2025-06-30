@@ -1,0 +1,260 @@
+.select-proxy-container {
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-proxy-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+.proxy-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.page-description {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.proxy-options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.proxy-option {
+  background-color: white;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.proxy-option:hover {
+  border-color: #2196f3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+}
+
+.proxy-option.selected {
+  border-color: #2196f3;
+  background-color: #e3f2fd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+.option-content {
+  padding: 20px;
+}
+
+.option-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.option-icon {
+  font-size: 32px;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.option-info {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.option-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.option-description {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.radio-container {
+  position: relative;
+  margin-top: 5px;
+}
+
+.radio-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-custom {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.radio-input:checked + .radio-custom {
+  border-color: #2196f3;
+  background-color: #2196f3;
+}
+
+.radio-input:checked + .radio-custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.option-details {
+  padding-left: 47px;
+}
+
+.details-text {
+  font-size: 13px;
+  color: #888;
+  font-style: italic;
+}
+
+.proxy-option.selected .option-title {
+  color: #2196f3;
+}
+
+.proxy-option.selected .option-description {
+  color: #1976d2;
+}
+
+.action-section {
+  padding: 20px 0;
+  border-top: 1px solid #e0e0e0;
+  background-color: white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.continue-button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.2s ease;
+  min-width: 150px;
+}
+
+.continue-button:hover {
+  background-color: #1976d2;
+  transform: translateY(-1px);
+}
+
+.continue-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button-icon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.selected-info {
+  margin-top: 15px;
+}
+
+.selection-text {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.selection-text strong {
+  color: #2196f3;
+}
+
+/* Animation for option selection */
+@keyframes selectPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.proxy-option.selected {
+  animation: selectPulse 0.3s ease;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 414px) {
+  .select-proxy-container {
+    padding: 15px;
+  }
+
+  .option-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .option-icon {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .radio-container {
+    align-self: flex-end;
+    margin-top: -30px;
+  }
+
+  .option-details {
+    padding-left: 0;
+    margin-top: 10px;
+  }
+}

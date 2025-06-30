@@ -1,11 +1,26 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
+import SelectProxy from "./components/SelectProxy";
 import ProxySettings from "./components/ProxySettings";
 import "./App.css";
 
 const App = () => {
+  const [currentView, setCurrentView] = useState("login"); // login, selectProxy, main
   const [activeTab, setActiveTab] = useState("login");
+  const [selectedProxyType, setSelectedProxyType] = useState(null);
+
+  // Handle login success
+  const handleLoginSuccess = () => {
+    setCurrentView("selectProxy");
+  };
+
+  // Handle proxy selection
+  const handleProxySelected = (proxyType) => {
+    setSelectedProxyType(proxyType);
+    setCurrentView("main");
+    setActiveTab("settings"); // Start with settings tab after proxy selection
+  };
 
   // Prevent any unhandled events
   const handleTabClick = (tabName) => {
@@ -16,14 +31,46 @@ const App = () => {
     }
   };
 
+  // Render different views based on current state
+  if (currentView === "login") {
+    return (
+      <Router>
+        <div className="app">
+          <div className="app-header">
+            <h1 className="app-title">Account Login</h1>
+          </div>
+          <div className="app-content">
+            <LoginPage onLoginSuccess={handleLoginSuccess} />
+          </div>
+        </div>
+      </Router>
+    );
+  }
+
+  if (currentView === "selectProxy") {
+    return (
+      <Router>
+        <div className="app">
+          <div className="app-header">
+            <h1 className="app-title">Select Proxy</h1>
+          </div>
+          <div className="app-content">
+            <SelectProxy onProxySelected={handleProxySelected} />
+          </div>
+        </div>
+      </Router>
+    );
+  }
+
+  // Main app with navigation
   const renderContent = () => {
     switch (activeTab) {
       case "login":
-        return <LoginPage />;
+        return <LoginPage onLoginSuccess={handleLoginSuccess} />;
       case "settings":
-        return <ProxySettings />;
+        return <ProxySettings selectedProxyType={selectedProxyType} />;
       default:
-        return <LoginPage />;
+        return <ProxySettings selectedProxyType={selectedProxyType} />;
     }
   };
 

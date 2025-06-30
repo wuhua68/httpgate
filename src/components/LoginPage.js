@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./LoginPage.css";
 
-const LoginPage = () => {
+const LoginPage = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -48,6 +48,9 @@ const LoginPage = () => {
           );
           setIsLoggedIn(true);
           alert("Login successful!");
+          if (onLoginSuccess) {
+            onLoginSuccess();
+          }
         } catch (error) {
           alert("Failed to save login credentials");
         } finally {
