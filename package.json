@@ -1,0 +1,14 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'No dev server configured yet'",
+    "build": "echo 'No build configured yet'",
+    "start": "echo 'No start configured yet'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
