@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  mode: "development",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -32,10 +33,21 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: "./dist",
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
     hot: true,
     port: 3000,
     historyApiFallback: true,
+    compress: true,
+    open: false,
+    client: {
+      logging: "warn",
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
   },
   resolve: {
     extensions: [".js", ".jsx"],
