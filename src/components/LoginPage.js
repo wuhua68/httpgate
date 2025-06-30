@@ -168,6 +168,11 @@ const LoginPage = ({ onLoginSuccess, onGoToSettings }) => {
           </button>
 
           <button className="forgot-password">Forgot Password?</button>
+
+          <button className="settings-link" onClick={onGoToSettings}>
+            <span className="button-icon">⚙️</span>
+            Go to Proxy Settings
+          </button>
         </div>
       </div>
     </div>
