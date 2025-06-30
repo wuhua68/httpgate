@@ -22,6 +22,13 @@ const App = () => {
     setActiveTab("settings"); // Start with settings tab after proxy selection
   };
 
+  // Handle direct access to settings (no login required)
+  const handleGoToSettings = () => {
+    setCurrentView("main");
+    setActiveTab("settings");
+    setSelectedProxyType("manual"); // Default to manual configuration
+  };
+
   // Prevent any unhandled events
   const handleTabClick = (tabName) => {
     try {
@@ -40,7 +47,10 @@ const App = () => {
             <h1 className="app-title">Account Login</h1>
           </div>
           <div className="app-content">
-            <LoginPage onLoginSuccess={handleLoginSuccess} />
+            <LoginPage
+              onLoginSuccess={handleLoginSuccess}
+              onGoToSettings={handleGoToSettings}
+            />
           </div>
         </div>
       </Router>
@@ -66,7 +76,12 @@ const App = () => {
   const renderContent = () => {
     switch (activeTab) {
       case "login":
-        return <LoginPage onLoginSuccess={handleLoginSuccess} />;
+        return (
+          <LoginPage
+            onLoginSuccess={handleLoginSuccess}
+            onGoToSettings={handleGoToSettings}
+          />
+        );
       case "settings":
         return <ProxySettings selectedProxyType={selectedProxyType} />;
       default:

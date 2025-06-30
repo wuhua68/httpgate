@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./LoginPage.css";
 
-const LoginPage = ({ onLoginSuccess }) => {
+const LoginPage = ({ onLoginSuccess, onGoToSettings }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
